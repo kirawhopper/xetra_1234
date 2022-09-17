@@ -9,6 +9,7 @@ awscli = "*"
 jupyter = "*"
 boto3 = "*"
 pyarrow = "*"
+pyyaml = "*"
 
 [dev-packages]
 
