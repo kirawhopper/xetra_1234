@@ -13,6 +13,7 @@ pyyaml = "*"
 pylint = "*"
 moto = "*"
 coverage = "*"
+boto3-stubs = {extras = ["s3"], version = "*"}
 
 [dev-packages]
 
