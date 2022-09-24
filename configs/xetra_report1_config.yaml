@@ -1,3 +1,42 @@
+# Configuration specific to creating s3 connections
+s3:
+  access_key: "AWS_ACCESS_KEY_ID"
+  secret_key: "AWS_SECRET_ACCESS_KEY"
+  src_endpoint_url: "https://s3.amazonaws.com"
+  src_bucket: "xetra-1234"
+  tgt_endpoint_url: "https://s3.amazonaws.com"
+  tgt_bucket: "prj-xetra-up-1234"
+
+# Configuration specific to the source
+source:
+  src_first_extract_date: "2022-09-10"
+  src_columns: ["ISIN", "Mnemonic", "Date", "Time", "StartPrice", "EndPrice", "MinPrice", "MaxPrice", "TradedVolume"]
+  src_col_date: "Date"
+  src_col_isin: "ISIN"
+  src_col_time: "Time"
+  src_col_start_price: "StartPrice"
+  src_col_min_price: "MinPrice"
+  src_col_max_price: "MaxPrice"
+  src_col_traded_volume: "TradedVolume"
+
+# Configuration specific to the target
+target:
+  tgt_key: "report1/xetra_daily_report1_"
+  tgt_key_date_format: "%Y%m%d_%H%M%S"
+  tgt_format: "parquet"
+  tgt_col_isin: "isin"
+  tgt_col_date: "date"
+  tgt_col_opening_price: "opening_price_eur"
+  tgt_col_closing_price: "closing_price_eur"
+  tgt_col_min_price: "minimum_price_eur"
+  tgt_col_max_price: "maximum_price_eur"
+  tgt_col_dly_traded_volume: "daily_traded_volume"
+  tgt_col_chg_prev_closing: "change_prev_closing_%"
+
+# Configuration specific to the meta file
+meta:
+  meta_key: "meta/report1/xetra_report1_meta_file.csv"
+
 # Logging configuration
 logging:
   version: 1
