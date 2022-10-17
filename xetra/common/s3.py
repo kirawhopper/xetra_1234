@@ -27,6 +27,7 @@ class S3BucketConnector():
         self._s3 = self.session.resource(service_name="s3", endpoint_url=endpoint_url)
         self._bucket = self._s3.Bucket(bucket)
     
+    @profile
     def list_files_in_prefix(self, prefix: str):
         """
         Listing all files with a prefix on the S3 bucket
@@ -39,6 +40,7 @@ class S3BucketConnector():
         files = [obj.key for obj in self._bucket.objects.filter(Prefix=prefix)]
         return files
     
+    @profile
     def read_csv_to_df(self, key: str, decoding: str = "utf-8", sep: str = ","):
         """
         Read csv file from S3 into Data Frame
@@ -57,6 +59,7 @@ class S3BucketConnector():
         df = pd.read_csv(data, delimiter=sep)
         return df
 
+    @profile
     def write_df_to_s3(self, df: pd.DataFrame, key: str, file_format: str):
         """
         Write data frame into S3 bucket as parquet

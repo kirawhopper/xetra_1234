@@ -89,6 +89,7 @@ class XetraETL():
                                                                                  self.meta_key)
         self.meta_update_list = [date for date in self.extract_date_list if date >= self.extract_date]
     
+    @profile
     def extract(self):
         """
         Read the source and concatenate all respective files to one data frame
@@ -106,6 +107,7 @@ class XetraETL():
         self._logger.info("Extracting Xetra source files completed.")
         return df
 
+    @profile
     def transform_report1(self, df: pd.DataFrame):
         """
         Applies the necessaty transformations to create report 1
@@ -159,6 +161,7 @@ class XetraETL():
         self._logger.info("Transformations for Xetra report 1 completed...")
         return df
 
+    @profile
     def load(self, df: pd.DataFrame):
         """
         Saves transformed dataframe to target S3
@@ -179,6 +182,7 @@ class XetraETL():
         self._logger.info("Xetra meta file successfuly updated")
         return True
 
+    @profile
     def etl_report1(self):
         """
         Extract, Transform and Load to create report 1
